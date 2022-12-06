@@ -33,8 +33,8 @@ function mainLoop() {
   if (x > 620 || x < 0) speedX = -speedX;
   if (y < 28) speedY = 8;
   if (y > 480) {
-    // gameOver();
-    speedY = -8
+    gameOver();
+    //speedY = -8
   }
   //bat code
   ctx.clearRect(0, 460, 640, 20);
