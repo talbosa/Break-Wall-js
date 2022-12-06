@@ -1,3 +1,3 @@
-export default class Ball extends Object{
+export default class Ball extends Obj{
 
 }

@@ -1,4 +1,4 @@
-export default class Object{
+export default class Obj{
     xPos;
     yPos;
     width;
@@ -10,6 +10,14 @@ export default class Object{
         this.width = width;
         this.height = height;
         this.color = color;
+    }
+    move(xPos, yPos){
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
+    moveRelative(relativeX, relativeY){
+        this.xPos+=relativeX;
+        this.yPos+=relativeY;
     }
     draw(){
         ctx.clearX(this.xPos - 1, this.yPos - 1, this.width+2, this.height+2);

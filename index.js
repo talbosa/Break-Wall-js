@@ -12,12 +12,14 @@ let level = 1;
 let brickNum = 0;
 drawBricks();
 
+let obj = new Obj(100,100,20,20,"#ffffff");
 // document.onmousemove
 document.onmousemove = function () {
   batX = window.event.clientX;
 };
 
 function mainLoop() {
+  obj.draw();
   clearInterval(gameTimer);
   gameTimer = setInterval(mainLoop, 50 - (timeAcceleration+scoreAcceleration));
   //clear prior position

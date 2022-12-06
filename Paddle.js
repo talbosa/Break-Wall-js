@@ -1,5 +1,5 @@
-export default class Paddle extends Object{
+export default class Paddle extends Obj{
     constructor(){
-        
+
     }
 }
