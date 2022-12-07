@@ -10,25 +10,28 @@ let scoreAcceleration = 0;
 let gameTimer = setInterval(mainLoop, 50);
 let level = 1;
 let brickNum = 0;
+let ball = new Rect(280, 400, 7, 7, "#cccccc");
 drawBricks();
-// import { Rect } from "./Rect";
-// let obj = new Rect(100,100,20,20,"#ffffff");
-// document.onmousemove
+
 document.onmousemove = function () {
   batX = window.event.clientX;
 };
 
 function mainLoop() {
-  // obj.draw();
+  //   ball.draw();
   clearInterval(gameTimer);
-  gameTimer = setInterval(mainLoop, 50 - (timeAcceleration+scoreAcceleration));
+  gameTimer = setInterval(
+    mainLoop,
+    50 - (timeAcceleration + scoreAcceleration)
+  );
   //clear prior position
-  ctx.clearRect(x - 1, y - 1, 9, 9);
+  //   ctx.clearRect(x - 1, y - 1, 9, 9);
   x += speedX;
   y += speedY;
+  ball.moveRelative(speedX, speedY);
   checkForHits();
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(x, y, 7, 7);
+  //   ctx.fillStyle = "#ffffff";
+  //   ctx.fillRect(x, y, 7, 7);
   //check for wall hits
   if (x > 620 || x < 0) speedX = -speedX;
   if (y < 28) speedY = 8;
@@ -78,15 +81,19 @@ function checkForHits() {
     ctx.clearRect(x0, y0, 79, 19);
     console.log(1);
     speedY = speedY * -1;
-    score++;
+    score++;``
     ctx.fillRect(0, 0, 640, 20);
     ctx.fillStyle = "black";
     ctx.font = "20px Arial";
     ctx.fillText(`Score: ${score}`, 2, 16);
-    ctx.fillText(`Speed: ${Math.round(scoreAcceleration+timeAcceleration)}`, 200, 16);
+    ctx.fillText(
+      `Speed: ${Math.round(scoreAcceleration + timeAcceleration)}`,
+      200,
+      16
+    );
     ctx.fillText(`Level: ${level}`, 400, 16);
     scoreAcceleration += 1;
-    brickNum-=1;
+    brickNum -= 1;
   }
 }
 
