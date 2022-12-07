@@ -11,8 +11,8 @@ let gameTimer = setInterval(mainLoop, 50);
 let level = 1;
 let brickNum = 0;
 drawBricks();
-// import { Obj } from "./Obj";
-// let obj = new Obj(100,100,20,20,"#ffffff");
+// import { Rect } from "./Rect";
+// let obj = new Rect(100,100,20,20,"#ffffff");
 // document.onmousemove
 document.onmousemove = function () {
   batX = window.event.clientX;
