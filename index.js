@@ -33,11 +33,11 @@ function mainLoop() {
   //   ctx.fillStyle = "#ffffff";
   //   ctx.fillRect(ball.xPos, ball.yPos, 7, 7);
   //check for wall hits
-  if (x > 620 || x < 0) speedX = -speedX;
-  if (y < 28) speedY = 8;
-  if (y > 480) {
-    // gameOver();
-    speedY = -8
+  if (ball.xPos > 620 || ball.xPos < 0) ball.velocityX = -ball.velocityX;
+  if (ball.yPos < 28) ball.velocityY = 8;
+  if (ball.yPos > 480) {
+    gameOver();
+    //ball.velocityY = -8
   }
   //bat code
   ctx.clearRect(0, 460, 640, 20);
