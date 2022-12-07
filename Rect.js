@@ -4,6 +4,8 @@ class Rect {
   width;
   height;
   color;
+  velocityX;
+  velocityY;
   constructor(xPos, yPos, width, height, color) {
     this.xPos = xPos;
     this.yPos = yPos;
@@ -11,6 +13,7 @@ class Rect {
     this.height = height;
     this.color = color;
   }
+
   move(xPos, yPos) {
     this.clear();
     this.xPos = xPos;

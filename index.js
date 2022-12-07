@@ -1,8 +1,8 @@
 const ctx = gameCanvas.getContext("2d");
-let x = 280;
-let y = 400;
-let speedX = 0;
-let speedY = -8;
+// let ball.xPos = 280;
+// let ball.yPos = 400;
+// let ball.velocityX = 0;
+// let ball.velocityY = -8;
 let batX = 280;
 let score = 0;
 let timeAcceleration = 1;
@@ -25,19 +25,19 @@ function mainLoop() {
     50 - (timeAcceleration + scoreAcceleration)
   );
   //clear prior position
-  //   ctx.clearRect(x - 1, y - 1, 9, 9);
-  x += speedX;
-  y += speedY;
-  ball.moveRelative(speedX, speedY);
+  //   ctx.clearRect(ball.xPos - 1, ball.yPos - 1, 9, 9);
+  //   ball.xPos += ball.velocityX;
+  //   ball.yPos += ball.velocityY;
+  ball.moveRelative(ball.velocityX, ball.velocityY);
   checkForHits();
   //   ctx.fillStyle = "#ffffff";
-  //   ctx.fillRect(x, y, 7, 7);
+  //   ctx.fillRect(ball.xPos, ball.yPos, 7, 7);
   //check for wall hits
-  if (x > 620 || x < 0) speedX = -speedX;
-  if (y < 28) speedY = 8;
-  if (y > 480) {
+  if (ball.xPos > 620 || ball.xPos < 0) ball.velocityX = -ball.velocityX;
+  if (ball.yPos < 28) ball.velocityY = 8;
+  if (ball.yPos > 480) {
     gameOver();
-    //speedY = -8
+    //ball.velocityY = -8
   }
   //bat code
   ctx.clearRect(0, 460, 640, 20);
@@ -50,10 +50,10 @@ function mainLoop() {
   if (brickNum <= 0) {
     level += 1;
     drawBricks();
-    x = 260;
-    y = 400;
-    speedX = 0;
-    speedY = -8;
+    ball.xPos = 260;
+    ball.yPos = 400;
+    ball.velocityX = 0;
+    ball.velocityY = -8;
     scoreAcceleration = 0;
   }
 }
@@ -69,19 +69,20 @@ function drawBricks() {
 }
 
 function checkForHits() {
-  const col = ctx.getImageData(x, y, 1, 1).data;
-  if (y > 460 && Math.abs(batX - x) < 60) {
-    speedY -= 8;
-    speedX = Math.round(0.15 * (x - batX));
+  const col = ctx.getImageData(ball.xPos, ball.yPos, 1, 1).data;
+  if (ball.yPos > 460 && Math.abs(batX - ball.xPos) < 60) {
+    ball.velocityY -= 8;
+    ball.velocityX = Math.round(0.15 * (ball.xPos - batX));
   } else if (col[3] != 0) {
     pingMp3.currentTime = 0;
     pingMp3.play();
-    const x0 = 80 * Math.floor(x / 80);
-    const y0 = 20 * Math.floor(y / 20);
+    const x0 = 80 * Math.floor(ball.xPos / 80);
+    const y0 = 20 * Math.floor(ball.yPos / 20);
     ctx.clearRect(x0, y0, 79, 19);
     console.log(1);
-    speedY = speedY * -1;
-    score++;``
+    ball.velocityY = ball.velocityY * -1;
+    score++;
+    ``;
     ctx.fillRect(0, 0, 640, 20);
     ctx.fillStyle = "black";
     ctx.font = "20px Arial";
