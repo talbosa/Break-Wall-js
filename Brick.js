@@ -1,3 +1,3 @@
-export default class Brick extends Obj{
+export default class Brick extends Rect{
 
 }

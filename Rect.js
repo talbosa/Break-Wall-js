@@ -1,4 +1,4 @@
-export default class Obj{
+export default class Rect{
     xPos;
     yPos;
     width;

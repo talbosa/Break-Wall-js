@@ -1,4 +1,4 @@
-export default class Paddle extends Obj{
+export default class Paddle extends Rect{
     constructor(){
 
     }
